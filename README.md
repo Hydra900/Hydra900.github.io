@@ -101,7 +101,7 @@
             =
                 
                <div class="content">
-                    <h1>Mason Senat (Tire Man)</h1>
+                    <h1>Mason Senat</h1>
                         
                     <p><h3>Student At NHS High School</h3></p>
                          <section class="interests">
