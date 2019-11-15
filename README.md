@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -81,7 +80,7 @@
             
             <nav>
             
-            <header><a href="index.html">Mason's Website</a></header>
+            <header><a href="index.html">Mason's Welcoming Embrace</a></header>
             
             <ul>
                 <li><a href="index.html">Home</a>
@@ -96,13 +95,13 @@
                                <div class = "sidebar"> 
                    <div class="imageContainer">
                    
-                        <img src = "https://jpams.stpsb.org/progress/PictureServlet?district=052&year=1920&sidno=20202364">
+                        <img src = "Images/Mason.png">
                     </div>
                 </div>
             =
                 
                <div class="content">
-                    <h1>Mason Senat</h1>
+                    <h1>Mason Senat (Tire Man)</h1>
                         
                     <p><h3>Student At NHS High School</h3></p>
                          <section class="interests">
