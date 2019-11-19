@@ -98,7 +98,7 @@
                         <img src = "Images/Mason.png">
                     </div>
                 </div>
-            =
+
                 
                <div class="content">
                     <h1>Mason Senat</h1>
