@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 
 <html>
     
     <head>
-        <title>Mason's Cursid Lands</title>
+        <title>Mason's Cursid Land</title>
           <style>
             body {
                 background: url("images/bg-matrix.jpg");
@@ -92,39 +93,31 @@
             </nav>
             
             <main>
-                               <div class = "sidebar"> 
+               <div class = "sidebar"> 
                    <div class="imageContainer">
                    
                         <img src = "Images/Mason.png">
                     </div>
                 </div>
-            =
+ 
                 
                <div class="content">
-                    <h1>Mason Senat</h1>
+                    <h1>Mason Senat (Tire Man)</h1>
                         
                     <p><h3>Student At NHS High School</h3></p>
                          <section class="interests">
                             <h2>Interests</h2>
                                 <ul>
                                    <h3><li>Honeslty I Could Go For Some Spaghetti</li>
-                                    <li>Video Games</li>
-                                    <li>World Domination</li></h3>
+                                    <li>Manifest Destiny</li>
+                                    <li>Reestablishing The Roman Empire</li></h3>
                                 </ul>
                                
                          </section>
                 </div>
-              <div class="content">
-                <h1>Portfolio</h1>  
-                 <ul id = "portfolio">
-                 </ul>
-              </div>
-              
-              
             </main>
         </div>
     </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script id="portfolioScript">$(document).ready(function() {$.getJSON('projects/projects.json').then(function(data) { data.projects.forEach(function(project){ $('#portfolio').append('<li><a href="projects/' + project.name + '/">' + project.title + ' : ' + project.description + '</a></li>'); }); }); });</script>
-
 </html> 
+               
+
