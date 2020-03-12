@@ -18,13 +18,40 @@ var level01 = function (window) {
             "speed": -3,
             "gameItems": [
                 { "type": "slime", "x": 400, "y": groundY },
+                { "type": "slime", "x": 600, "y": groundY },
+                { "type": "slime", "x": 1850, "y": groundY },
+                { "type": "slime", "x": 2050, "y": groundY },
+                { "type": "slime", "x": 3050, "y": groundY },
+                { "type": "slime", "x": 3250, "y": groundY },
+                { "type": "slime", "x": 3450, "y": groundY },
                 
-                { "type": "phantom", "x": 600, "y": groundY },
                 
-                { "type": "creeper", "x": 1000, "y": groundY },
-                { "type": "creeper", "x": 1500, "y": groundY },
+                { "type": "rock", "x": 930, "y": groundY },
+                { "type": "rock", "x": 1200,"y": groundY },
+                { "type": "rock", "x": 1650,"y": groundY },
+                { "type": "rock", "x": 2599,"y": groundY },
+                { "type": "rock", "x": 3600,"y": groundY },
+                { "type": "rock", "x": 3800,"y": groundY },
                 
-                { "type": "goldapple", "x": 2000, "y": groundY },
+                { "type": "phantom", "x": 800, "y": groundY },
+                { "type": "phantom", "x": 1400, "y": groundY },
+                { "type": "phantom", "x": 2450, "y": groundY },
+                { "type": "phantom", "x": 2200, "y": groundY },
+                { "type": "phantom", "x": 3900, "y": groundY },
+                
+                
+                { "type": "creeper", "x": 1300, "y": groundY },
+                { "type": "creeper", "x": 1700, "y": groundY },
+                { "type": "creeper", "x": 2600, "y": groundY },
+                { "type": "creeper", "x": 2850, "y": groundY },
+                
+                
+                { "type": "goldapple", "x": 1050, "y": groundY - 90},
+                { "type": "goldapple", "x": 1650,"y": groundY - 90 },
+                { "type": "goldapple", "x": 3600,"y": groundY - 90 },
+                
+                
+                { "type": "toothless", "x": 4500, "y": groundY },
             ],
          
             
@@ -52,6 +79,18 @@ var level01 = function (window) {
                     createEnemyCreeper(gameItemObject.x, gameItemObject.y);
                     
                 }
+                
+                if(gameItemObject.type === 'goldapple') {
+                  createEnemyApple(gameItemObject.x, gameItemObject.y);
+                }
+                
+                if(gameItemObject.type === 'toothless'){
+                    createEnemytoothless(gameItemObject.x, gameItemObject.y);
+                }
+                    if(gameItemObject.type === 'rock'){
+                    createObstacleRock(gameItemObject.x, gameItemObject.y);
+                }
+                
         }
             
         //Objects
@@ -60,7 +99,7 @@ var level01 = function (window) {
         function createObstacleSlime(x , y){
            
             var hitZoneSize = 20;
-            var damageFromObstacle = 1000;
+            var damageFromObstacle = 50;
             var slimeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
             slimeHitZone.x = x - 2;
             slimeHitZone.y = y - 10;
@@ -70,11 +109,37 @@ var level01 = function (window) {
             var obstacleImage = draw.bitmap('img/Slime (2).png');
             slimeHitZone.addChild(obstacleImage);
             obstacleImage.x = -23;
-            obstacleImage.y = - 30;
+            obstacleImage.y = - 32;
             obstacleImage.scaleX = .2;
             obstacleImage.scaleY = .2;
             
+        
+            
         };   
+        
+                function createObstacleRock(x , y){
+           
+            var hitZoneSize = 20;
+            var damageFromObstacle = 50;
+            var rockHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
+            rockHitZone.x = x - 2;
+            rockHitZone.y = y - 10;
+            
+            game.addGameItem(rockHitZone); 
+            
+            var obstacleImage = draw.bitmap('img/rock.png');
+            rockHitZone.addChild(obstacleImage);
+            obstacleImage.x = -23;
+            obstacleImage.y = - 52;
+            obstacleImage.scaleX = .15;
+            obstacleImage.scaleY = .15;
+            
+        
+            
+        };   
+        
+        
+        
         
          function createObstaclePhantom(x , y){
            
@@ -101,59 +166,95 @@ var level01 = function (window) {
         function createEnemyCreeper(x , y){
  
             
-                var enemy =  game.createGameItem('creeper', 25);
-                enemy.x = x + 20;
-                enemy.y= y - 50;
-                enemy.velocityX = - 1;
-                game.addGameItem(enemy);
-                
-                
-                var creeper = draw.bitmap('img/Creeper.png');
-                 creeper.x = -25;
-                 creeper.y = - 70;
-                 creeper.scaleX = .8;
-                 creeper.scaleY = .8;
-                 
-                enemy.addChild(creeper);
+            var enemy =  game.createGameItem('creeper', 25);
+            enemy.x = x + 20;
+            enemy.y= y - 50;
+            enemy.velocityX = - 2;
+            game.addGameItem(enemy);
+            
+            
+            var creeper = draw.bitmap('img/Creeper.png');
+             creeper.x = -25;
+             creeper.y = - 70;
+             creeper.scaleX = .8;
+             creeper.scaleY = .8;
+             
+            enemy.addChild(creeper);
 
-               enemy.onPlayerCollision = function (){
-                   game.changeIntegrity(-30);
-                   enemy.fadeOut();
-               };
+           enemy.onPlayerCollision = function (){
+               game.changeIntegrity(-100);
+               enemy.fadeOut();
+           };
+    
+            enemy.onProjectileCollision = function() {
+                    game.increaseScore(50);
+                    enemy.fadeOut();
+            };
+                
+        }
+                
+                     function createEnemytoothless(x , y){
+ 
+            
+            var enemy =  game.createGameItem('toothless', 25);
+            enemy.x = x + 20;
+            enemy.y= y - 70;
+            enemy.velocityX = - 2;
+            game.addGameItem(enemy);
+            
+            
+            var toothless = draw.bitmap('img/toothless.png');
+             toothless.x = -25;
+             toothless.y = - 100;
+             toothless.scaleX = .8;
+             toothless.scaleY = .8;
+             
+            enemy.addChild(toothless);
+
+           enemy.onPlayerCollision = function (){
+               game.changeIntegrity(-1000);
+               
+           };
+    
+            enemy.onProjectileCollision = function() {
+                    game.increaseScore(5000);
+                    enemy.fadeOut();
+            };
+                
+        }   
+                
+                
+                
+                
+       function createEnemyApple(x, y) {
+           
+           var reward = game.createGameItem('goldapple', 30);
+           reward. x = x + 10;
+           reward.y = y - 30;
+           reward.velocityX = -2;
+           game.addGameItem(reward);
+           
+                  
+        var goldapple = draw.bitmap('img/golden apple.png');
+            goldapple.x = -27;
+            goldapple.y = - 42;
+            goldapple.scaleX = .75;
+            goldapple.scaleY = .75;
+ 
+             reward.addChild(goldapple);
+
+          reward.onPlayerCollision = function (){
+             game.changeIntegrity(50);
+             reward.fadeOut();
+            };
         
-                enemy.onProjectileCollision = function() {
-                        game.increaseScore(50);
-                        enemy.fadeOut();
-                };
-                       function createGameItem(x, y) {
-                           var goldapple = game.createGameItem('gold apple', 30);
-                           goldapple. x = x;
-                           goldapple.y = y;
-                           goldapple.velocityX = 1;
-                           game.addGameItem(goldapple);
-                           
-                       }            
-                        var goldapple = draw.bitmap('/img/golden apple.png');
-                            creeper.x = -25;
-                            creeper.y = - 70;
-                            creeper.scaleX = .8;
-                            creeper.scaleY = .8;
-                 
-                    enemy.addChild(goldapple);
-
-                        enemy.onPlayerCollision = function (){
-                         game.changeIntegrity(50);
-                         enemy.fadeOut();
-               };
-                           
-                                  
-                
-            }    
+        }   
   
-     
+                     
+       
         
         // DO NOT EDIT CODE BELOW HERE
-        }
+   };
 };
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
